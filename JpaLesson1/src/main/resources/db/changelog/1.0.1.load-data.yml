@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.1.load-persons
+      author: Mothusi Molorane
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  name: id
+                  type: numeric
+              - column:
+                  name: first_name
+                  type: string
+              - column:
+                  name: last_name
+                  type: string
+              - column:
+                  name: dob
+                  type: date
+              - column:
+                  name: gender
+                  type: string
+            encoding: UTF-8
+            file: data/persons.csv
+            relativeToChangelogFile: true
+            separator: ','
+            tableName: person
+  - changeSet:
+      id: 1.0.1.load-addresses
+      author: Mothusi Molorane
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  name: id
+                  type: numeric
+              - column:
+                  name: user_id
+                  type: numeric
+              - column:
+                  name: province
+                  type: string
+              - column:
+                  name: city
+                  type: string
+              - column:
+                  name: street_name
+                  type: string
+            encoding: UTF-8
+            file: data/addresses.csv
+            relativeToChangelogFile: true
+            separator: ','
+            tableName: address

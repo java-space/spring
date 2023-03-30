@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0.create-person-table
+      author: Mothusi Molorane
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: first_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: dob
+                  type: date
+              - column:
+                  name: gender
+                  type: varchar(10)
+  - changeSet:
+      id: 1.0.0.create-address-table
+      author: Mothusi Molorane
+      changes:
+        - createTable:
+            tableName: address
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_person_address_user_id
+                    references: person(id)
+                    nullable: false
+              - column:
+                  name: province
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: street_name
+                  type: varchar(50)

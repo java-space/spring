@@ -1,0 +1,12 @@
+server:
+  port: 2010
+spring:
+  application:
+    name: lesson1
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yml
+    enabled: true
+  datasource:
+    username: root
+    password: blessing
+    url: jdbc:mysql://localhost:3306/javaspace?serverTimezone=UTC&createDatabaseIfNotExist=true
