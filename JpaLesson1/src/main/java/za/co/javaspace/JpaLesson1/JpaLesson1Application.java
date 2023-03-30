@@ -11,6 +11,7 @@ import za.co.javaspace.JpaLesson1.repository.PersonRepo;
 import za.co.javaspace.JpaLesson1.service.PersonService;
 
 import java.time.LocalDate;
+import java.util.*;
 
 @SpringBootApplication
 @Transactional
@@ -26,7 +27,8 @@ public class JpaLesson1Application {
 
             //Person p = personRepo.findById(2014098616L).orElseThrow();
 
-            personService.update(Gender.MALE, "Test; 'DELETE FROM Person p'");
+            List<Person> list = personService.findAllByAddresses("KZN");
+
         };
     }
 
