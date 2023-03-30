@@ -10,13 +10,13 @@
 package za.co.javaspace.JpaLesson1.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -28,9 +28,18 @@ public class Address extends AbstractEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private Person person;
 
-    private String province;
+    private Boolean isCompleted = false;
 
-    private String city;
+    private LocalDate dueDate;
 
-    private String streetName;
+    private String description;
+
+    private Boolean isFavourite = false;
+
+    @PrePersist
+    public void init() {
+        this.setCreatedDate(LocalDateTime.now());
+        this.setIsDeleted(false);
+        this.isCompleted = false;
+    }
 }

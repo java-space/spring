@@ -1,5 +1,6 @@
 package za.co.javaspace.JpaLesson1;
 
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,10 +8,12 @@ import org.springframework.context.annotation.Bean;
 import za.co.javaspace.JpaLesson1.entity.Gender;
 import za.co.javaspace.JpaLesson1.entity.Person;
 import za.co.javaspace.JpaLesson1.repository.PersonRepo;
+import za.co.javaspace.JpaLesson1.service.PersonService;
 
 import java.time.LocalDate;
 
 @SpringBootApplication
+@Transactional
 public class JpaLesson1Application {
 
     public static void main(String[] args) {
@@ -18,18 +21,12 @@ public class JpaLesson1Application {
     }
 
     @Bean
-    public CommandLineRunner demo(PersonRepo personRepo) {
+    public CommandLineRunner demo(PersonService personService) {
         return (args) -> {
 
-            Person p = personRepo.findById(2014098616L).orElseThrow();
+            //Person p = personRepo.findById(2014098616L).orElseThrow();
 
-            Person p1 = new Person();
-            p1.setId(1L);
-            p1.setFirstName("Test");
-            p1.setLastName("Test");
-            p1.setDob(LocalDate.now());
-            p1.setGender(Gender.MALE);
-            personRepo.save(p1);
+            personService.update(Gender.MALE, "Test; 'DELETE FROM Person p'");
         };
     }
 
