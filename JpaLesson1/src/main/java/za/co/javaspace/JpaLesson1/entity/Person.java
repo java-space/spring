@@ -9,9 +9,7 @@
 
 package za.co.javaspace.JpaLesson1.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -31,6 +29,7 @@ public class Person extends AbstractEntity {
 
     private LocalDate dob;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @OneToMany(mappedBy = "person")
