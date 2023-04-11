@@ -30,13 +30,8 @@ public class Person extends AbstractEntity {
     private LocalDate dob;
 
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Gender gender = Gender.MALE;
 
     @OneToMany(mappedBy = "person")
     private List<Address> addresses;
-
-    @PrePersist
-    public void init() {
-        this.gender = Gender.MALE;
-    }
 }
