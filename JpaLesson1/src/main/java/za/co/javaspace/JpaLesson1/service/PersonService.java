@@ -4,9 +4,9 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import za.co.javaspace.JpaLesson1.entity.Person;
-import za.co.javaspace.JpaLesson1.repository.GenericPersonRepo;
 import za.co.javaspace.JpaLesson1.repository.NamesOnly;
 import za.co.javaspace.JpaLesson1.repository.PersonRepo;
+import za.co.javaspace.JpaLesson1.repository.SpELClosedPropagation;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class PersonService {
 
     private PersonRepo personRepo;
-    private GenericPersonRepo genericPersonRepo;
+    //private GenericPersonRepo genericPersonRepo;
 
     public List<Person> findAllByAddresses(String province) {
         return personRepo.findFirst20ByAddresses_ProvinceContaining(province);
@@ -35,7 +35,11 @@ public class PersonService {
         return personRepo.findAllPersons();
     }
 
-    public List<Person> findAllGPersons() {
-        return genericPersonRepo.findAllPersons();
+//    public List<Person> findAllGPersons() {
+//        return genericPersonRepo.findAllPersons();
+//    }
+
+    public List<SpELClosedPropagation> getPersonDescription () {
+        return personRepo.getPersonDescription();
     }
 }

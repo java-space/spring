@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import za.co.javaspace.JpaLesson1.entity.Gender;
 import za.co.javaspace.JpaLesson1.entity.Person;
 import za.co.javaspace.JpaLesson1.repository.PersonRepo;
+import za.co.javaspace.JpaLesson1.repository.SpELClosedPropagation;
 import za.co.javaspace.JpaLesson1.service.PersonService;
 
 import java.time.LocalDate;
@@ -29,8 +30,13 @@ public class JpaLesson1Application {
 
             //List<Person> list = personService.findAllByAddresses("KZN");
 
-            List<Person> list = personService.findAllPersons();
+            //List<Person> list = personService.findAllPersons();
 
+            List<SpELClosedPropagation> list = personService.getPersonDescription();
+
+            for (int i = 0; i < list.size(); i++) {
+                System.out.println(list.get(i).personDescription());
+            }
 
 
         };

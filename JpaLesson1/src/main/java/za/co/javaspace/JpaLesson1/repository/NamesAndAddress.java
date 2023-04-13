@@ -9,6 +9,8 @@
 
 package za.co.javaspace.JpaLesson1.repository;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.util.List;
 
 public interface NamesAndAddress {

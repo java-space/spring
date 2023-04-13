@@ -42,4 +42,7 @@ public interface PersonRepo extends JpaRepository<Person, Long> {
     @Query("SELECT p FROM #{#entityName} p")
     List<Person> findAllPersons();
 
+    @Query("SELECT p FROM #{#entityName} p")
+    List<SpELClosedPropagation> getPersonDescription();
+
 }
