@@ -11,7 +11,7 @@ public interface PersonRepo extends JpaRepository<Person, Long> {
 
     <T> List<T> findByLastName(String lastName, Class<T> type);
 
-    List<NamesOnlyRecord> findNamesOnlyRecord(String firstName);
+    //List<NamesOnlyRecord> findNamesOnlyRecord(String firstName);
 
     List<NamesOnlyDTO> findByFirstName(String firstName);
 
@@ -38,5 +38,8 @@ public interface PersonRepo extends JpaRepository<Person, Long> {
     List<Person> findAllByGender(Gender gender);
 
     List<Person> findFirst20ByAddresses_ProvinceContaining(String name);
+
+    @Query("SELECT p FROM #{#entityName} p")
+    List<Person> findAllPersons();
 
 }

@@ -27,7 +27,11 @@ public class JpaLesson1Application {
 
             //Person p = personRepo.findById(2014098616L).orElseThrow();
 
-            List<Person> list = personService.findAllByAddresses("KZN");
+            //List<Person> list = personService.findAllByAddresses("KZN");
+
+            List<Person> list = personService.findAllPersons();
+
+
 
         };
     }

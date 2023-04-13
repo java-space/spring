@@ -27,4 +27,9 @@ public class PersonService {
         List<NamesOnly> namesOnlies =
                 personRepo.findByLastName("Matthews", NamesOnly.class);
     }
+
+
+    public List<Person> findAllPersons() {
+        return personRepo.findAllPersons();
+    }
 }
